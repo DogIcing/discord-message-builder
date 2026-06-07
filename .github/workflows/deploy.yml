@@ -50,3 +50,6 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build
+          
+      - name: Publish to NPM
+        run: npm publish
