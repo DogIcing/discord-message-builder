@@ -23,6 +23,7 @@ jobs:
         with:
           node-version: 20
           cache: "npm"
+          registry-url: "https://registry.npmjs.org"
 
       - name: Install dependencies
         run: npm ci
@@ -50,6 +51,9 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./docs/build
+
+      - name: Upgrade npm CLI
+        run: npm install -g npm@latest
           
       - name: Publish to NPM
         run: npm publish
