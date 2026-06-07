@@ -4,7 +4,7 @@
     "description": "Construct Discord messages using a builder pattern",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/dogicing/discord-message-builder.git"
+        "url": "git+https://github.com/DogIcing/discord-message-builder.git"
     },
     "type": "commonjs",
     "main": "./dist/index.js",
