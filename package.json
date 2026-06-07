@@ -2,6 +2,10 @@
     "name": "discord-message-builder",
     "version": "1.0.0",
     "description": "Construct Discord messages using a builder pattern",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dogicing/discord-message-builder.git"
+    },
     "type": "commonjs",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
