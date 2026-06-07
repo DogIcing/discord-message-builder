@@ -1,0 +1,52 @@
+name: Deploy Docs
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Linter
+        run: npm run lint
+
+      - name: Run Unit Tests with Coverage
+        run: npm run test:coverage
+
+      - name: Generate API raw files (TypeDoc)
+        run: npm run docs:generate
+
+      - name: Install and Build Docusaurus Application
+        run: |
+          cd docs
+          npm install
+          npm run build
+
+      - name: Fix Jekyll Traversal Flags
+        run: touch docs/build/.nojekyll
+
+      - name: Deploy static bundle to GitHub Pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs/build

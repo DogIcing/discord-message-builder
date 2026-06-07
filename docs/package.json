@@ -1,0 +1,9 @@
+{
+    "name": "discord-message-builder-docs",
+    "version": "1.0.0",
+    "private": true,
+    "scripts": {
+        "start": "docusaurus start",
+        "build": "docusaurus build"
+    }
+}
